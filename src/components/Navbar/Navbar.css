@@ -1,0 +1,7 @@
+.active {
+  background-color: rgb(14, 122, 129) !important;
+  color: white !important;
+}
+.inactive:hover {
+  background-color: transparent !important;
+}
