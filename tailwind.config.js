@@ -6,6 +6,7 @@ export default {
       colors: {
         primary: "rgb(14, 122, 129)",
         secondary: "rgba(14, 122, 129, 0.2)",
+        secondary2: "rgba(14, 122, 129, 0.1)",
         dark1: "rgb(19 19 19)",
         dark2: "rgba(19, 19, 19, 0.7)",
         dark3: "rgba(19, 19, 19, 0.6)",

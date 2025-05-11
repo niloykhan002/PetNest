@@ -133,7 +133,7 @@ const Navbar = () => {
                 // onClick={handleSignOut}
                 className="btn btn-sm md:h-12 bg-primary text-white md:w-24"
               >
-                LogOut
+                SIGN OUT
               </button>
             </div>
           ) : (
