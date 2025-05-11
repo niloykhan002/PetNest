@@ -12,7 +12,7 @@ const Navbar = () => {
           to={"/"}
           className={({ isActive }) =>
             isActive
-              ? "active rounded-lg text-lg"
+              ? "active px-5 rounded-lg text-lg"
               : "inactive hover:text-primary text-lg text-dark2 font-medium"
           }
         >
@@ -24,7 +24,7 @@ const Navbar = () => {
           to={"/shop"}
           className={({ isActive }) =>
             isActive
-              ? "active rounded-lg text-lg"
+              ? "active px-5 rounded-lg text-lg"
               : "inactive hover:text-primary text-lg text-dark2 font-medium"
           }
         >
@@ -36,7 +36,7 @@ const Navbar = () => {
           to={"/contact"}
           className={({ isActive }) =>
             isActive
-              ? "active rounded-lg text-lg"
+              ? "active px-5 rounded-lg text-lg"
               : "inactive hover:text-primary text-lg text-dark2 font-medium"
           }
         >
@@ -79,10 +79,10 @@ const Navbar = () => {
           </div>
           <Link
             to={"/"}
-            className="btn btn-ghost p-6 hover:bg-secondary hover:border-primary hover:rounded-lg font-bold text-lg md:text-4xl"
+            className="btn btn-ghost p-6 hover:bg-secondary hover:border-primary hover:rounded-lg "
           >
-            <FaPaw className="text-primary text-3xl" />
-            <p>
+            <FaPaw className="text-primary text-lg md:text-3xl" />
+            <p className="font-bold text-lg md:text-4xl">
               PET<span className="text-primary">NEST</span>
             </p>
           </Link>

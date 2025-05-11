@@ -2,6 +2,10 @@
   background-color: rgb(14, 122, 129) !important;
   color: white !important;
 }
+.active:hover {
+  background-color: rgba(14, 122, 129, 0.2) !important ;
+  color: rgba(19, 19, 19, 0.7) !important;
+}
 .inactive:hover {
   background-color: transparent !important;
 }
