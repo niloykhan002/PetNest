@@ -16,7 +16,7 @@ const Banner = () => {
           readable content of a page when looking <br />
           at its layout. The point of using Lorem Ipsum is that it has a.
         </p>
-        <a href="#best-friend">
+        <a href="#category">
           <button className="btn border-none text-white bg-primary hover:bg-secondary hover:text-dark2 lg:w-40">
             View More
           </button>
