@@ -6,18 +6,7 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 
 const Card = ({ pet }) => {
-  const {
-    petId,
-    breed,
-    // category,
-    date_of_birth,
-    price,
-    image,
-    gender,
-    // pet_details,
-    // vaccinated_status,
-    pet_name,
-  } = pet;
+  const { petId, breed, date_of_birth, price, image, gender, pet_name } = pet;
 
   return (
     <div>
@@ -58,6 +47,7 @@ const Card = ({ pet }) => {
                 {gender}
               </span>
             </p>
+            {/* Price */}
             <p className="flex gap-2 items-center">
               <span className="text-lg text-dark2 font-semibold flex items-center justify-center gap-2">
                 <BiSolidDollarCircle />
@@ -69,6 +59,7 @@ const Card = ({ pet }) => {
             </p>
           </div>
           <hr className="my-4" />
+          {/* buttons */}
           <div class="grid grid-cols-4 gap-5">
             <div className="tooltip" data-tip="Add To Wishlist">
               <button className="btn rounded-lg text-lg text-primary bg-white border-secondary2 hover:text-red-600">
