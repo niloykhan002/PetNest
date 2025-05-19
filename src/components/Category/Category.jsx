@@ -52,7 +52,7 @@ const Category = () => {
         </button>
       </div>
       {/*  All pets  */}
-      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 my-20">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-20">
         {pets.map((pet) => (
           <Card pet={pet} />
         ))}

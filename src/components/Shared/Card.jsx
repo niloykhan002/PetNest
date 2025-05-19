@@ -66,7 +66,7 @@ const Card = ({ pet }) => {
                 <FaHeart />
               </button>
             </div>
-            <div class="col-span-3 grid grid-cols-2 gap-5">
+            <div class=" col-span-3 grid grid-cols-2 gap-5">
               <button className="btn rounded-lg font-bold text-primary text-lg bg-white border-secondary2 hover:text-white hover:bg-primary">
                 Adopt
               </button>

@@ -9,8 +9,8 @@ const Details = () => {
   const { breed, date_of_birth, price, image, gender, pet_details, pet_name } =
     petData;
   return (
-    <div className="my-20 w-3/4 mx-auto border rounded-lg">
-      <div className="lg:flex bg-base-100 ">
+    <div className="my-20 w-3/4 mx-auto border rounded-lg shadow-sm">
+      <div className="lg:flex bg-base-100 rounded-lg ">
         <figure className="p-5 lg:w-96 h-80">
           <img className="rounded-lg w-full h-full " src={image} alt="Album" />
         </figure>
