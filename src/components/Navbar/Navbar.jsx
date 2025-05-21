@@ -1,4 +1,4 @@
-import { FaPaw } from "react-icons/fa";
+import { FaPaw, FaUser } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 
@@ -92,58 +92,32 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <div className="flex md:gap-4 gap-1 items-center">
-              <div className="dropdown dropdown-end">
-                <img
-                  className="md:w-12 md:h-12 h-6 w-6 rounded-full"
-                  src={user.photoURL}
-                  role="button"
-                  tabIndex={0}
-                  id="image-hover"
-                  alt=""
-                />
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+            <div className="flex md:gap-3 gap-1 items-center">
+              <Link to={"/profile"}>
+                <div
+                  className="md:p-4 tooltip tooltip-left p-2 border text-dark2 border-secondary hover:text-white hover:bg-primary rounded-full"
+                  data-tip="Profile"
                 >
-                  <li>
-                    <NavLink
-                      to={"/create-assignments"}
-                      className={({ isActive }) =>
-                        isActive ? "active" : "hover:bg-secondary"
-                      }
-                    >
-                      Create Assignments
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to={"/my-assignments"}
-                      className={({ isActive }) =>
-                        isActive ? "active" : "hover:bg-secondary"
-                      }
-                    >
-                      My Attempted Assignments
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
+                  <FaUser />
+                </div>
+              </Link>
 
-              <button
-                // onClick={handleSignOut}
-                className="btn btn-sm md:h-12 bg-primary text-white md:w-24"
-              >
+              <button className="btn btn-xs md:btn-sm  border-none text-white bg-primary hover:bg-secondary hover:text-dark2 ">
                 SIGN OUT
               </button>
             </div>
           ) : (
-            <div className="md:space-x-4 flex items-center">
-              <button className="btn btn-xs md:h-12 bg-primary text-white md:w-24">
-                <Link to={"/login"}>Login</Link>
-              </button>
-              <button className="btn btn-xs md:h-12 bg-primary text-white md:w-24">
-                <Link to={"/register"}>Register</Link>
-              </button>
+            <div className=" flex gap-2 md:gap-4 items-center">
+              <Link to={"/login"}>
+                <button className="btn btn-xs md:btn-sm  border-none text-white bg-primary hover:bg-secondary hover:text-dark2 ">
+                  Login
+                </button>
+              </Link>
+              <Link to={"/register"}>
+                <button className="btn btn-xs md:btn-sm border-none text-white bg-primary hover:bg-secondary hover:text-dark2">
+                  Register
+                </button>
+              </Link>
             </div>
           )}
         </div>

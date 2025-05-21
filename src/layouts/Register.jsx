@@ -1,8 +1,16 @@
 import Lottie from "lottie-react";
 import register_data from "../assets/lotties/register.json";
 import { Link } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 const Register = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
+  };
   return (
     <div className="flex items-center justify-center my-20">
       <Toaster />
@@ -14,62 +22,42 @@ const Register = () => {
           <h1 className="font-bold text-4xl text-center pt-8 text-primary ">
             Register
           </h1>
-          <form className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
+          <form onSubmit={handleRegister} className="card-body">
+            <fieldset className="fieldset">
+              <label className="label">Name</label>
               <input
                 type="text"
                 name="name"
-                placeholder="Enter Your Name"
-                className="input input-bordered"
-                required
+                className="input w-full"
+                placeholder="Name"
               />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
+
+              <label className="label">Email</label>
               <input
                 type="email"
                 name="email"
-                placeholder="Enter Your Email"
-                className="input input-bordered"
-                required
+                className="input w-full"
+                placeholder="Email"
               />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo URL</span>
-              </label>
-              <input
-                type="text"
-                name="photo"
-                placeholder="Enter Your Photo URL"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
+              <label className="label">Password</label>
               <input
                 type="password"
                 name="password"
-                placeholder="Enter Your Password"
-                className="input input-bordered"
-                required
+                className="input w-full"
+                placeholder="Password"
               />
-            </div>
-            <div className="form-control mt-6">
-              <button className="btn bg-primary text-white">Register</button>
-            </div>
+
+              <button className="btn mt-2 border-none text-white bg-primary hover:bg-secondary hover:text-dark2">
+                Register
+              </button>
+            </fieldset>
           </form>
           <p className="pl-8 pb-8">
             Already have an account?{" "}
-            <Link to={"/login"} className="font-bold text-blue-600">
+            <Link
+              to={"/login"}
+              className="font-bold text-blue-600 hover:text-dark2"
+            >
               Login
             </Link>
           </p>

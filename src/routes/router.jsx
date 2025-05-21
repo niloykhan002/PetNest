@@ -3,11 +3,15 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/Root";
 import Home from "../layouts/Home";
 import Details from "../layouts/Details";
+import Register from "../layouts/Register";
+import Login from "../layouts/Login";
+import ErrorPage from "../layouts/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -20,6 +24,14 @@ const router = createBrowserRouter([
           fetch(
             `https://openapi.programming-hero.com/api/peddy/pet/${params.id}`
           ),
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
