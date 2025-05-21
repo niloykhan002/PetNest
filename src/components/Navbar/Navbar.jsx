@@ -45,9 +45,6 @@ const Navbar = () => {
       </li>
     </>
   );
-  //   const handleSignOut = () => {
-  //     logOut();
-  //   };
 
   return (
     <div className=" bg-base-100">
@@ -95,7 +92,7 @@ const Navbar = () => {
             <div className="flex md:gap-3 gap-1 items-center">
               <Link to={"/profile"}>
                 <div
-                  className="md:p-4 tooltip tooltip-left p-2 border text-dark2 border-secondary hover:text-white hover:bg-primary rounded-full"
+                  className="flex items-center md:p-3 tooltip tooltip-left p-2 border text-dark2 border-secondary hover:text-white hover:bg-primary rounded-full"
                   data-tip="Profile"
                 >
                   <FaUser />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiSolidDollarCircle } from "react-icons/bi";
 import { FaCalendar, FaHeart } from "react-icons/fa";
 import { IoFemaleSharp, IoMaleSharp } from "react-icons/io5";
@@ -6,7 +6,18 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 
 const Card = ({ pet }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { petId, breed, date_of_birth, price, image, gender, pet_name } = pet;
+
+  const handleAdopt = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    data.petId = petId;
+    console.log(data);
+  };
 
   return (
     <div>
@@ -67,7 +78,10 @@ const Card = ({ pet }) => {
               </button>
             </div>
             <div class=" col-span-3 grid grid-cols-2 gap-5">
-              <button className="btn rounded-lg font-bold text-primary text-lg bg-white border-secondary2 hover:text-white hover:bg-primary">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="btn rounded-lg font-bold text-primary text-lg bg-white border-secondary2 hover:text-white hover:bg-primary"
+              >
                 Adopt
               </button>
               <Link to={`/details/${petId}`}>
@@ -79,6 +93,46 @@ const Card = ({ pet }) => {
           </div>
         </div>
       </div>
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h2 className="font-bold text-lg">Adoption Form</h2>
+            <div className="space-y-4 mt-4"></div>
+            <form onSubmit={handleAdopt} className="space-y-4">
+              <fieldset className="fieldset">
+                <label className="label">Contact</label>
+                <input
+                  type="number"
+                  name="contact"
+                  className="input w-full"
+                  placeholder="Number"
+                />
+                <label className="label">Address</label>
+                <input
+                  type="text"
+                  name="address"
+                  className="input w-full"
+                  placeholder="Address"
+                />
+              </fieldset>
+              <div className="modal-action">
+                <button type="submit" className="btn btn-success text-white">
+                  Submit
+                </button>
+
+                <button
+                  type="button"
+                  className="btn btn-error text-white"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

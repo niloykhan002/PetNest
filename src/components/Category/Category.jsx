@@ -15,6 +15,7 @@ const Category = () => {
       .then((res) => setPets(res.data.pets))
       .catch((error) => console.log(`Fetch Error: ${error}`));
   }, []);
+
   return (
     <section id="category" className="mt-20 mx-2">
       <h1 className="text-5xl font-extrabold text-dark1 text-center">
