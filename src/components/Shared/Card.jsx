@@ -49,7 +49,7 @@ const Card = ({ pet }) => {
                 Age:
               </span>
               <span className="text-lg text-dark2 flex items-center justify-center">
-                {age}
+                {age} Year
               </span>
             </p>
             {/* Location */}

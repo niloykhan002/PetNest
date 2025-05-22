@@ -21,9 +21,7 @@ const router = createBrowserRouter([
         path: "/details/:id",
         element: <Details />,
         loader: ({ params }) =>
-          fetch(
-            `https://openapi.programming-hero.com/api/peddy/pet/${params.id}`
-          ),
+          fetch(`https://petnest-np9s.onrender.com/api/pets/${params.id}`),
       },
       {
         path: "/register",
