@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { BiSolidDollarCircle } from "react-icons/bi";
-import { FaCalendar, FaHeart } from "react-icons/fa";
-import { IoFemaleSharp, IoMaleSharp } from "react-icons/io5";
+import { FaCheckCircle, FaClock, FaHeart } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 
 const Card = ({ pet }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { petId, breed, date_of_birth, price, image, gender, pet_name } = pet;
+  const { id, breed, age, price, thumbnailUrl, location, status, name } = pet;
 
   const handleAdopt = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    data.petId = petId;
+    data.petId = id;
     console.log(data);
   };
 
@@ -23,10 +23,14 @@ const Card = ({ pet }) => {
     <div>
       <div className="card bg-base-100 border shadow-lg">
         <figure className="p-4">
-          <img className="rounded-lg w-full h-56" src={image} alt="Pet" />
+          <img
+            className="rounded-lg w-full h-56"
+            src={thumbnailUrl}
+            alt="Pet"
+          />
         </figure>
         <div className="card-body">
-          <h2 className="font-bold text-xl">{pet_name}</h2>
+          <h2 className="font-bold text-xl">{name}</h2>
           <div>
             {/* Breed */}
             <p className="flex gap-2 items-center">
@@ -38,24 +42,40 @@ const Card = ({ pet }) => {
                 {breed}
               </span>
             </p>
-            {/* Birth */}
+            {/* Age */}
             <p className="flex gap-2 items-center">
               <span className="text-lg font-semibold text-dark2 flex items-center justify-center gap-2">
-                <FaCalendar />
-                Birth:
+                <FaClock />
+                Age:
               </span>
               <span className="text-lg text-dark2 flex items-center justify-center">
-                {date_of_birth}
+                {age}
               </span>
             </p>
-            {/* Gender */}
+            {/* Location */}
             <p className="flex gap-2 items-center">
-              <span className="text-lg text-dark2 font-semibold flex items-center justify-center gap-2">
-                {gender === "Male" ? <IoMaleSharp /> : <IoFemaleSharp />}
-                Gender:
+              <span className="text-lg font-semibold text-dark2 flex items-center justify-center gap-2">
+                <FaLocationDot />
+                Location:
               </span>
               <span className="text-lg text-dark2 flex items-center justify-center">
-                {gender}
+                {location}
+              </span>
+            </p>
+            {/* Status */}
+            <p className="flex gap-2 items-center">
+              <span
+                className={`text-lg font-semibold text-dark2 flex items-center justify-center gap-2 `}
+              >
+                <FaCheckCircle />
+                Status:
+              </span>
+              <span
+                className={`text-lg text-dark2 flex items-center justify-center ${
+                  status === "available" ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {status}
               </span>
             </p>
             {/* Price */}
@@ -71,20 +91,20 @@ const Card = ({ pet }) => {
           </div>
           <hr className="my-4" />
           {/* buttons */}
-          <div class="grid grid-cols-4 gap-5">
+          <div className="grid grid-cols-4 gap-5">
             <div className="tooltip" data-tip="Add To Wishlist">
               <button className="btn rounded-lg text-lg text-primary bg-white border-secondary2 hover:text-red-600">
                 <FaHeart />
               </button>
             </div>
-            <div class=" col-span-3 grid grid-cols-2 gap-5">
+            <div className=" col-span-3 grid grid-cols-2 gap-5">
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="btn rounded-lg font-bold text-primary text-lg bg-white border-secondary2 hover:text-white hover:bg-primary"
               >
                 Adopt
               </button>
-              <Link to={`/details/${petId}`}>
+              <Link to={`/details/${id}`}>
                 <button className="btn rounded-lg font-bold text-primary text-lg bg-white border-secondary2 hover:bg-primary hover:text-white">
                   Details
                 </button>

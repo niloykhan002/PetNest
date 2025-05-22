@@ -1,0 +1,5 @@
+.category-active {
+  background-color: rgb(14, 122, 129) !important;
+  color: white !important;
+  border-radius: 70px;
+}
