@@ -7,6 +7,7 @@ import Register from "../layouts/Register";
 import Login from "../layouts/Login";
 import ErrorPage from "../layouts/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import Wishlist from "../layouts/Wishlist";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`https://petnest-np9s.onrender.com/api/pets/${params.id}`),
+      },
+      {
+        path: "/wishlist",
+        element: (
+          <PrivateRoute>
+            <Wishlist />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/register",

@@ -2,6 +2,7 @@ import { FaPaw, FaUser } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
+import { TbShoppingBagHeart } from "react-icons/tb";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -62,9 +63,9 @@ const Navbar = () => {
           </div>
           <Link
             to={"/"}
-            className="btn btn-ghost p-6 hover:bg-secondary hover:border-primary hover:rounded-lg "
+            className="flex items-center gap-1 md:gap-2 hover:bg-secondary hover:border-primary hover:rounded-lg "
           >
-            <FaPaw className="text-primary text-lg md:text-3xl" />
+            <FaPaw className="text-primary text-sm md:text-3xl" />
             <p className="font-bold text-lg md:text-4xl">
               PET<span className="text-primary">NEST</span>
             </p>
@@ -76,12 +77,15 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <div className="flex md:gap-3 gap-1 items-center">
+              <Link to={"/wishlist"} className="mr-1">
+                <TbShoppingBagHeart className="text-lg md:text-xl lg:text-2xl" />
+              </Link>
               <Link to={"/profile"}>
                 <div
                   className="flex items-center md:p-3 tooltip tooltip-left p-2 border text-dark2 border-secondary hover:text-white hover:bg-primary rounded-full"
                   data-tip="Profile"
                 >
-                  <FaUser />
+                  <FaUser className="text-sm" />
                 </div>
               </Link>
 

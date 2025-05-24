@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loader, setLoader] = useState(true);
 
   const createUser = (data, navigate) => {
     axios
@@ -53,12 +54,14 @@ const AuthProvider = ({ children }) => {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
+    setLoader(false);
   }, []);
   const authInfo = {
     user,
     createUser,
     loginUser,
     logOut,
+    loader,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
