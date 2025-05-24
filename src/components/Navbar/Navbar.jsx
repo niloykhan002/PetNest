@@ -20,28 +20,14 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to={"/shop"}
-          className={({ isActive }) =>
-            isActive
-              ? "active px-5 rounded-lg text-lg"
-              : "inactive hover:text-primary text-lg text-dark2 font-medium"
-          }
-        >
+        <a className="inactive hover:text-primary text-lg text-dark2 font-medium">
           Shop
-        </NavLink>
+        </a>
       </li>
       <li>
-        <NavLink
-          to={"/contact"}
-          className={({ isActive }) =>
-            isActive
-              ? "active px-5 rounded-lg text-lg"
-              : "inactive hover:text-primary text-lg text-dark2 font-medium"
-          }
-        >
+        <a className="inactive hover:text-primary text-lg text-dark2 font-medium">
           Contact
-        </NavLink>
+        </a>
       </li>
     </>
   );

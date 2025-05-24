@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
       .post("https://petnest-np9s.onrender.com/api/auth/register", data)
       .then((res) => {
         setUser(res.data);
+
         localStorage.setItem("user", JSON.stringify(res.data));
         toast.success("Registration Successful");
         setTimeout(() => {
@@ -28,6 +29,7 @@ const AuthProvider = ({ children }) => {
       .post("https://petnest-np9s.onrender.com/api/auth/login", data)
       .then((res) => {
         setUser(res.data);
+
         localStorage.setItem("user", JSON.stringify(res.data));
         toast.success("Login Successful");
         setTimeout(() => {

@@ -3,13 +3,28 @@ import { BiSolidDollarCircle } from "react-icons/bi";
 import { FaCheckCircle, FaClock, FaHeart } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { TfiMenuAlt } from "react-icons/tfi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AdoptModal from "./AdoptModal";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Card = ({ pet }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const { id, breed, age, price, thumbnailUrl, location, status, name } = pet;
+
+  const handleModalOpen = () => {
+    if (user) {
+      setIsModalOpen(true);
+    } else {
+      toast.error("Please Login to Adopt");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+    }
+  };
 
   return (
     <div>
@@ -91,7 +106,7 @@ const Card = ({ pet }) => {
             </div>
             <div className=" col-span-3 grid grid-cols-2 gap-5">
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={handleModalOpen}
                 className="btn rounded-lg font-bold text-primary text-lg bg-white border-secondary2 hover:text-white hover:bg-primary"
               >
                 Adopt
