@@ -51,7 +51,7 @@ const Register = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
-                  className="input  w-full validator"
+                  className="input w-full validator"
                   required
                   placeholder="Password"
                   minlength="8"
@@ -66,15 +66,6 @@ const Register = () => {
                   {showPassword ? <IoEyeOff size={15} /> : <IoEye size={15} />}
                 </button>
               </div>
-              <p className="validator-hint">
-                Must be more than 8 characters, including
-                <br />
-                At least one number
-                <br />
-                At least one lowercase letter
-                <br />
-                At least one uppercase letter
-              </p>
 
               <button
                 type="submit"
