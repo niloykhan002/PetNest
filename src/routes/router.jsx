@@ -8,6 +8,7 @@ import Login from "../layouts/Login";
 import ErrorPage from "../layouts/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Wishlist from "../layouts/Wishlist";
+import Profile from "../layouts/Profile";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Wishlist />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
           </PrivateRoute>
         ),
       },

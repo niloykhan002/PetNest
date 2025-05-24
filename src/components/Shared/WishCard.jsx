@@ -9,23 +9,13 @@ import AdoptModal from "./AdoptModal";
 
 const WishCard = ({ pet, onDelete }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {
-    id,
-    breed,
-    age,
-    price,
-    thumbnailUrl,
-    location,
-    status,
-    gender,
-    name,
-  } = pet;
+  const { id, breed, age, price, thumbnailUrl, location, status, name } = pet;
 
   return (
     <div className="lg:w-3/4 mx-auto">
       <div className=" border mx-2  rounded-lg shadow-sm">
-        <div className="lg:flex bg-base-100 rounded-lg ">
-          <figure className="p-5 lg:w-96 h-80">
+        <div className="md:flex bg-base-100 rounded-lg ">
+          <figure className="p-5 w-full md:w-80 lg:w-96 h-80">
             <img
               className="rounded-lg w-full h-full "
               src={thumbnailUrl}
@@ -65,16 +55,7 @@ const WishCard = ({ pet, onDelete }) => {
                   {location}
                 </span>
               </p>
-              {/* Gender */}
-              <p className="flex gap-2 items-center">
-                <span className="text-lg text-dark2 font-semibold flex items-center justify-center gap-2">
-                  {gender === "Male" ? <IoMaleSharp /> : <IoFemaleSharp />}
-                  Gender:
-                </span>
-                <span className="text-lg text-dark2 flex items-center justify-center">
-                  {gender}
-                </span>
-              </p>
+
               {/* Status */}
               <p className="flex gap-2 items-center">
                 <span
@@ -103,22 +84,22 @@ const WishCard = ({ pet, onDelete }) => {
               </p>
             </div>
             {/* button */}
-            <div className="flex items-center gap-4 mt-4">
+            <div className="flex items-center gap-2 lg:gap-4 mt-4">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="btn w-fit border-none font-bold text-lg text-white bg-primary hover:bg-secondary hover:text-dark2"
+                className="btn btn-sm  w-fit border-none font-bold text-lg text-white bg-primary hover:bg-secondary hover:text-dark2"
               >
                 Adopt
               </button>
 
               <Link to={`/details/${id}`}>
-                <button className="btn w-fit border-none font-bold text-lg text-white bg-primary hover:bg-secondary hover:text-dark2">
+                <button className="btn btn-sm w-fit border-none font-bold text-lg text-white bg-primary hover:bg-secondary hover:text-dark2">
                   Details
                 </button>
               </Link>
               <button
                 onClick={onDelete}
-                className="btn w-fit border-none font-bold text-lg text-white bg-red-600 hover:bg-secondary hover:text-dark2"
+                className="btn btn-sm w-fit border-none font-bold text-lg text-white bg-red-600 hover:bg-secondary hover:text-dark2"
               >
                 Remove
               </button>

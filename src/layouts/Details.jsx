@@ -9,6 +9,11 @@ import Card from "../components/Shared/Card";
 import AdoptModal from "../components/Shared/AdoptModal";
 
 const Details = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
   const data = useLoaderData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
@@ -29,8 +34,8 @@ const Details = () => {
   return (
     <div className="my-20 lg:w-3/4 mx-auto">
       <div className=" border mx-2  rounded-lg shadow-sm">
-        <div className="lg:flex bg-base-100 rounded-lg ">
-          <figure className="p-5 lg:w-96 h-80">
+        <div className="md:flex bg-base-100 rounded-lg ">
+          <figure className="p-5 md:w-80 lg:w-96 h-80">
             <img
               className="rounded-lg w-full h-full "
               src={image}
@@ -94,7 +99,7 @@ const Details = () => {
             {/* button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="btn w-fit mt-4 border-none font-bold text-lg text-white bg-primary hover:bg-secondary hover:text-dark2"
+              className="btn btn-sm w-fit mt-4 border-none font-bold text-lg text-white bg-primary hover:bg-secondary hover:text-dark2"
             >
               Adopt
             </button>
