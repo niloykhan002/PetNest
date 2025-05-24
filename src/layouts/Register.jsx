@@ -1,32 +1,24 @@
 import Lottie from "lottie-react";
 import register_data from "../assets/lotties/register.json";
 import { Link, useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
+import { useState } from "react";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 const Register = () => {
   const { createUser } = useAuth();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const handleRegister = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    if (data.password.length < 6) {
-      return toast.error("Length must be at least 6 character ");
-    }
-    if (!/[A-Z]/.test(data.password)) {
-      return toast.error("Must have an Uppercase letter in the password");
-    }
-    if (!/[a-z]/.test(data.password)) {
-      return toast.error("Must have a Lowercase letter in the password");
-    }
     createUser(data, navigate);
   };
   return (
     <div className="flex items-center justify-center my-20">
-      <Toaster />
       <div className="lg:flex flex-row-reverse items-center gap-6">
         <div className="md:w-[600px] w-80">
           <Lottie animationData={register_data} />
@@ -43,6 +35,7 @@ const Register = () => {
                 name="name"
                 className="input w-full"
                 placeholder="Name"
+                required
               />
 
               <label className="label">Email</label>
@@ -51,16 +44,42 @@ const Register = () => {
                 name="email"
                 className="input w-full"
                 placeholder="Email"
+                required
               />
               <label className="label">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="input w-full"
-                placeholder="Password"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="input  w-full validator"
+                  required
+                  placeholder="Password"
+                  minlength="8"
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-3 -translate-y-1/2 text-dark3 hover:text-dark2"
+                >
+                  {showPassword ? <IoEyeOff size={15} /> : <IoEye size={15} />}
+                </button>
+              </div>
+              <p className="validator-hint">
+                Must be more than 8 characters, including
+                <br />
+                At least one number
+                <br />
+                At least one lowercase letter
+                <br />
+                At least one uppercase letter
+              </p>
 
-              <button className="btn mt-2 border-none text-white bg-primary hover:bg-secondary hover:text-dark2">
+              <button
+                type="submit"
+                className="btn mt-2 border-none text-white bg-primary hover:bg-secondary hover:text-dark2"
+              >
                 Register
               </button>
             </fieldset>

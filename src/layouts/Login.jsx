@@ -1,12 +1,14 @@
 import Lottie from "lottie-react";
-import { Toaster } from "react-hot-toast";
 import login_data from "../assets/lotties/login.json";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { useState } from "react";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 const Login = () => {
   const { loginUser } = useAuth();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -17,7 +19,6 @@ const Login = () => {
   };
   return (
     <div className="flex items-center justify-center my-20">
-      <Toaster />
       <div className="lg:flex flex-row-reverse items-center gap-6">
         <div className="md:w-[500px] w-80">
           <Lottie animationData={login_data} />
@@ -34,16 +35,30 @@ const Login = () => {
                 name="email"
                 className="input w-full"
                 placeholder="Email"
+                required
               />
               <label className="label">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="input w-full"
-                placeholder="Password"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="input w-full"
+                  required
+                  placeholder="Password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-3 -translate-y-1/2 text-dark3 hover:text-dark2"
+                >
+                  {showPassword ? <IoEyeOff size={15} /> : <IoEye size={15} />}
+                </button>
+              </div>
 
-              <button className="btn mt-2 border-none text-white bg-primary hover:bg-secondary hover:text-dark2">
+              <button
+                type="submit"
+                className="btn mt-2 border-none text-white bg-primary hover:bg-secondary hover:text-dark2"
+              >
                 Login
               </button>
             </fieldset>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const AdoptModal = ({ setIsModalOpen, id }) => {
   const handleAdopt = (e) => {
@@ -32,7 +32,6 @@ const AdoptModal = ({ setIsModalOpen, id }) => {
   };
   return (
     <div className="modal modal-open">
-      <Toaster />
       <div className="modal-box">
         <h2 className="font-bold text-lg">Adoption Form</h2>
         <div className="space-y-4 mt-4"></div>

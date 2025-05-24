@@ -6,7 +6,7 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AdoptModal from "./AdoptModal";
 import useAuth from "../../hooks/useAuth";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import axios from "axios";
 
 const Card = ({ pet }) => {
@@ -62,7 +62,6 @@ const Card = ({ pet }) => {
 
   return (
     <div>
-      <Toaster />
       <div className="card bg-base-100 border shadow-lg">
         <figure className="p-4">
           <img
