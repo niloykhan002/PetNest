@@ -11,13 +11,17 @@ const Category = () => {
   const [pets, setPets] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(
         `https://petnest-np9s.onrender.com/api/pets/?page=1&limit=30&categoryId=${selectedCategory}`
       )
-      .then((res) => setPets(res.data.data))
+      .then((res) => {
+        setPets(res.data.data);
+        setLoading(false);
+      })
       .catch((error) => console.log(`Fetch Error: ${error}`));
   }, [selectedCategory]);
 
@@ -48,29 +52,34 @@ const Category = () => {
       </p>
       {/* categories button  */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {categories.map((category) => (
+        {categories.map((category, idx) => (
           <button
-            key={category.id}
+            key={idx}
             id="category-btn"
             onClick={() => setSelectedCategory(category.id)}
             className={`${
               category.id === selectedCategory ? "category-active" : ""
-            } flex gap-2 items-center justify-center py-5 border rounded-lg text-dark1 hover:bg-secondary hover:text-dark2 `}
+            }  py-5 border rounded-lg text-dark1 hover:bg-secondary hover:text-dark2`}
           >
-            <img
-              className="w-10"
-              src={`${
-                category.title === "Cat"
-                  ? cat
-                  : category.title === "Dog"
-                  ? dog
-                  : category.title === "Rabbit"
-                  ? rabbit
-                  : bird
-              }`}
-              alt=""
-            />
-            <h3 className="text-2xl font-bold">{category.title}</h3>
+            <a
+              href="#all-pets"
+              className="flex gap-2 items-center justify-center"
+            >
+              <img
+                className="w-10"
+                src={`${
+                  category.title === "Cat"
+                    ? cat
+                    : category.title === "Dog"
+                    ? dog
+                    : category.title === "Rabbit"
+                    ? rabbit
+                    : bird
+                }`}
+                alt=""
+              />
+              <h3 className="text-2xl font-bold">{category.title}</h3>
+            </a>
           </button>
         ))}
       </div>
@@ -84,11 +93,20 @@ const Category = () => {
         </button>
       </div>
       {/*  All pets  */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-20">
-        {pets.map((pet, idx) => (
-          <Card key={idx} pet={pet} />
-        ))}
-      </div>
+      {loading ? (
+        <div className="flex justify-center items-center my-12">
+          <span className="loading loading-bars loading-lg"></span>
+        </div>
+      ) : (
+        <div
+          id="all-pets"
+          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-20"
+        >
+          {pets.map((pet, idx) => (
+            <Card key={idx} pet={pet} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

@@ -35,8 +35,8 @@ const Details = () => {
     console.log(data);
   };
   return (
-    <div className="my-20 w-3/4 mx-auto">
-      <div className=" border rounded-lg shadow-sm">
+    <div className="my-20 lg:w-3/4 mx-auto">
+      <div className=" border mx-2  rounded-lg shadow-sm">
         <div className="lg:flex bg-base-100 rounded-lg ">
           <figure className="p-5 lg:w-96 h-80">
             <img
@@ -114,11 +114,11 @@ const Details = () => {
           <p>{description}</p>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <h1 className=" p-3 shadow-sm w-fit my-12 font-bold text-3xl">
+      <div className="flex mx-2 flex-col items-center justify-center">
+        <h1 className=" p-3 shadow-sm w-fit my-12 font-bold text-2xl lg:text-3xl">
           You May Also Like
         </h1>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {suggestedPets.map((pet) => (
             <Card key={pet.id} pet={pet} />
           ))}

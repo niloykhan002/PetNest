@@ -1,15 +1,28 @@
 import Lottie from "lottie-react";
 import register_data from "../assets/lotties/register.json";
-import { Link } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
+  const { createUser } = useAuth();
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
+
+    if (data.password.length < 6) {
+      return toast.error("Length must be at least 6 character ");
+    }
+    if (!/[A-Z]/.test(data.password)) {
+      return toast.error("Must have an Uppercase letter in the password");
+    }
+    if (!/[a-z]/.test(data.password)) {
+      return toast.error("Must have a Lowercase letter in the password");
+    }
+    createUser(data, navigate);
   };
   return (
     <div className="flex items-center justify-center my-20">

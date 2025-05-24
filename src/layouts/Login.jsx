@@ -1,15 +1,19 @@
 import Lottie from "lottie-react";
 import { Toaster } from "react-hot-toast";
 import login_data from "../assets/lotties/login.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
+  const { loginUser } = useAuth();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
+
+    loginUser(data, navigate);
   };
   return (
     <div className="flex items-center justify-center my-20">

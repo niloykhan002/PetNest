@@ -1,10 +1,10 @@
 import { FaPaw, FaUser } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  //   const { user, logOut } = useAuth();
-  const user = true;
+  const { user, logOut } = useAuth();
   const link = (
     <>
       <li>
@@ -99,20 +99,23 @@ const Navbar = () => {
                 </div>
               </Link>
 
-              <button className="btn btn-xs md:btn-sm  border-none text-white bg-primary hover:bg-secondary hover:text-dark2 ">
-                SIGN OUT
+              <button
+                onClick={() => logOut()}
+                className="btn btn-xs md:btn-sm  border-none text-white bg-primary hover:bg-secondary hover:text-dark2 "
+              >
+                LOGOUT
               </button>
             </div>
           ) : (
             <div className=" flex gap-2 md:gap-4 items-center">
               <Link to={"/login"}>
                 <button className="btn btn-xs md:btn-sm  border-none text-white bg-primary hover:bg-secondary hover:text-dark2 ">
-                  Login
+                  LOGIN
                 </button>
               </Link>
               <Link to={"/register"}>
                 <button className="btn btn-xs md:btn-sm border-none text-white bg-primary hover:bg-secondary hover:text-dark2">
-                  Register
+                  REGISTER
                 </button>
               </Link>
             </div>

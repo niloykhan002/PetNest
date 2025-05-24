@@ -4,20 +4,12 @@ import { FaCheckCircle, FaClock, FaHeart } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { Link } from "react-router-dom";
+import AdoptModal from "./AdoptModal";
 
 const Card = ({ pet }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { id, breed, age, price, thumbnailUrl, location, status, name } = pet;
-
-  const handleAdopt = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    data.petId = id;
-    console.log(data);
-  };
 
   return (
     <div>
@@ -114,45 +106,7 @@ const Card = ({ pet }) => {
         </div>
       </div>
       {/* Modal */}
-      {isModalOpen && (
-        <div className="modal modal-open">
-          <div className="modal-box">
-            <h2 className="font-bold text-lg">Adoption Form</h2>
-            <div className="space-y-4 mt-4"></div>
-            <form onSubmit={handleAdopt} className="space-y-4">
-              <fieldset className="fieldset">
-                <label className="label">Contact</label>
-                <input
-                  type="number"
-                  name="contact"
-                  className="input w-full"
-                  placeholder="Number"
-                />
-                <label className="label">Address</label>
-                <input
-                  type="text"
-                  name="address"
-                  className="input w-full"
-                  placeholder="Address"
-                />
-              </fieldset>
-              <div className="modal-action">
-                <button type="submit" className="btn btn-success text-white">
-                  Submit
-                </button>
-
-                <button
-                  type="button"
-                  className="btn btn-error text-white"
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  Close
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      {isModalOpen && <AdoptModal setIsModalOpen={setIsModalOpen} id={id} />}
     </div>
   );
 };
